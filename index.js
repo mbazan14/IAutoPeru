@@ -50,3 +50,8 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Servidor activo en puerto ${PORT}`);
 });
+
+// 🌐 Endpoint de prueba para Render
+app.get("/", (req, res) => {
+  res.send("✅ Backend IAutoPeru activo y listo para recibir solicitudes!");
+});
