@@ -13,15 +13,9 @@ const ENDPOINT = "https://migue-mbx0i92x-eastus2.cognitiveservices.azure.com/ope
 app.post("/recomendar-aceite", async (req, res) => {
   const datos = req.body;
 
-const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, junto con **2 o 3 marcas disponibles en Perú**. Usa un formato **breve y directo**.
-- **Marca:** ${datos.marca}
-- **Modelo:** ${datos.modelo}
-- **Año:** ${datos.anio}
-- **Kilometraje:** ${datos.kilometraje}
-- **Combustible:** ${datos.combustible}
-- **Uso:** ${datos.uso}
-- **Transmisión:** ${datos.transmision}
-- **Solo incluye el tipo de aceite, grado y marcas específicas en Perú, sin descripciones largas.**`;
+const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, junto con **2 o 3 marcas disponibles en Perú**, pero **sin descripciones largas**. Usa un formato **breve y directo**:
+- **Tipo de Aceite:** (ejemplo: Sintético 0W-20)
+- **Marcas en Perú:** Mobil 1, Castrol EDGE, Shell Helix Ultra`;
 
   try {
     const respuesta = await axios.post(
