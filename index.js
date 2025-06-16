@@ -22,7 +22,8 @@ const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo
 - **Uso:** ${datos.uso}  
 - **Transmisión:** ${datos.transmision}  
 
-Además, menciona qué marcas de aceite tienen **mayor afinidad con la marca del vehículo consultado**, basadas en calidad y recomendaciones habituales.  
+Además, en **caso de que el motor presente consumo de aceite**, sugiere opciones alternativas de viscosidad que ayuden a reducir la evaporación y mejorar la protección del motor.  
+
 **Solo incluye el tipo de aceite, grado y marcas específicas en Perú, sin descripciones largas.**`;
 
   try {
