@@ -13,7 +13,7 @@ const ENDPOINT = "https://migue-mbx0i92x-eastus2.cognitiveservices.azure.com/ope
 app.post("/recomendar-aceite", async (req, res) => {
   const datos = req.body;
 
-const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, incluyendo **2 o 3 marcas disponibles en Perú**. Formato claro y directo:
+const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, junto con **2 o 3 marcas disponibles en Perú**. Usa un formato **breve y directo**.
 - **Marca:** ${datos.marca}
 - **Modelo:** ${datos.modelo}
 - **Año:** ${datos.anio}
@@ -21,7 +21,7 @@ const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo
 - **Combustible:** ${datos.combustible}
 - **Uso:** ${datos.uso}
 - **Transmisión:** ${datos.transmision}
-- **Proporciona marcas específicas de aceite en Perú.**`;
+- **Solo incluye el tipo de aceite, grado y marcas específicas en Perú, sin descripciones largas.**`;
 
   try {
     const respuesta = await axios.post(
