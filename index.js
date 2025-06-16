@@ -13,9 +13,12 @@ const ENDPOINT = "https://migue-mbx0i92x-eastus2.cognitiveservices.azure.com/ope
 app.post("/recomendar-aceite", async (req, res) => {
   const datos = req.body;
 
-const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, junto con **2 o 3 marcas disponibles en Perú**, pero **sin descripciones largas**. Usa un formato **breve y directo**:
-- **Tipo de Aceite:** (ejemplo: Sintético 0W-20)
-- **Marcas en Perú:** Mobil 1, Castrol EDGE, Shell Helix Ultra`;
+const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo con base en:
+1️⃣ **Recomendación del fabricante** (Honda) para motores en buen estado.
+2️⃣ **Kilometraje** superior a 150,000 km donde 5W-30 podría ser más estable.
+3️⃣ **Consumo excesivo de aceite**, donde 5W-30 o 10W-30 pueden ayudar.
+
+**Devuelve una respuesta clara y breve**, con las mejores opciones de aceite según el caso.`;
 
   try {
     const respuesta = await axios.post(
