@@ -35,8 +35,12 @@ const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo
       }
     );
 
-    const texto = respuesta.data.choices[0].message.content.trim();
-    res.json({ recomendacion: texto });
+const texto = respuesta.data.choices[0].message.content.trim();
+
+// 🔹 Filtrar texto para evitar duplicaciones y asegurar claridad
+const textoLimpio = texto.split("\n\n").slice(0, 3).join("\n\n");
+
+res.json({ recomendacion: textoLimpio });
   } catch (err) {
     console.error("❌ Error al llamar a la IA:", err.response?.data || err.message);
     res.status(500).json({ error: "No se pudo obtener una recomendación de la IA." });
