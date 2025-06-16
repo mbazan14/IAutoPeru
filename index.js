@@ -13,12 +13,17 @@ const ENDPOINT = "https://migue-mbx0i92x-eastus2.cognitiveservices.azure.com/ope
 app.post("/recomendar-aceite", async (req, res) => {
   const datos = req.body;
 
-const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo con base en:
-1️⃣ **Recomendación del fabricante** (Honda) para motores en buen estado.
-2️⃣ **Kilometraje** superior a 150,000 km donde 5W-30 podría ser más estable.
-3️⃣ **Consumo excesivo de aceite**, donde 5W-30 o 10W-30 pueden ayudar.
+const prompt = `Indica el tipo y grado de aceite recomendado para este vehículo, junto con **2 o 3 marcas disponibles en Perú**. Usa un formato **breve y directo**.  
+- **Marca:** ${datos.marca}  
+- **Modelo:** ${datos.modelo}  
+- **Año:** ${datos.anio}  
+- **Kilometraje:** ${datos.kilometraje}  
+- **Combustible:** ${datos.combustible}  
+- **Uso:** ${datos.uso}  
+- **Transmisión:** ${datos.transmision}  
 
-**Devuelve una respuesta clara y breve**, con las mejores opciones de aceite según el caso.`;
+Además, menciona qué marcas de aceite tienen **mayor afinidad con la marca del vehículo consultado**, basadas en calidad y recomendaciones habituales.  
+**Solo incluye el tipo de aceite, grado y marcas específicas en Perú, sin descripciones largas.**`;
 
   try {
     const respuesta = await axios.post(
